@@ -1,5 +1,4 @@
-# a8-building-applications
-## Assignment 8: Building Applications
+# Assignment 8: Building Applications
 
 Assignment [link](https://github.com/spencer501/a8-building-applications)
 
