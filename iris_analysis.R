@@ -30,7 +30,7 @@ build_map <- function(type, x_value, y_value) {
               mode = 'markers',
               marker = list(size = 12)
       ) %>% 
-      layout(title = paste(y_value, "VS", x_value, "for", type),
+      layout(title = paste(gsub("\\.", " ", y_value), "VS", gsub("\\.", " ", x_value), "for", type),
              xaxis = list(title = gsub("\\.", " ", x_value)),
              yaxis = list(title = gsub("\\.", " ", y_value))
              )
