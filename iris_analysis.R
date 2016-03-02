@@ -6,11 +6,6 @@ library(plotly)
 
 # load iris dataset
 data <- iris 
-   # # clean data
-   # rename("Sepal Width" = Sepal.Width,
-   #        "Sepal Length" = Sepal.Length,
-   #        "Petal Width" = Petal.Width,
-   #        "Petal Length" = Petal.Length)
    
 # get species
 species <- as.vector(unique(data$Species))
@@ -21,23 +16,26 @@ measures <- colnames(data)[1:4]
 
 #Build a map 
 build_map <- function(type, x_value, y_value) {
-
-   plot_data <- data %>%
-      filter(Species == type) %>% 
-      select(eval(parse(text = x_value)), 
-             eval(parse(text = y_value)))
    
+   # create data frame with values to plot
+   plot_data <- data %>%
+      filter(Species == type) %>%
+      select_(x_value,
+              y_value)
+   
+   # make a plot
    plot <- plot_data %>% 
       plot_ly(x = eval(parse(text = x_value)),
               y = eval(parse(text = y_value)),
               mode = 'markers',
               marker = list(size = 12)
-
       ) %>% 
       layout(title = paste(y_value, "VS", x_value, "for", type),
-             xaxis = list(title = x_value),
-             yaxis = list(title = y_value))
-      
+             xaxis = list(title = gsub("\\.", " ", x_value)),
+             yaxis = list(title = gsub("\\.", " ", y_value))
+             )
+   
+   # return the plot   
    return(plot)
 }
 

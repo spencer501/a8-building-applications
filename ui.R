@@ -20,11 +20,11 @@ shinyUI(fluidPage(
                      choices = species,
                      selected = species[1]),
          
-         radioButtons('x_compare', label = h4("X-value to compare"),
+         radioButtons('x_compare', label = h4("X-value to compare:"),
                       choices = measures,
                       selected = measures[1]),
          
-         radioButtons('y_compare', label = h4("Y-value to compare"),
+         radioButtons('y_compare', label = h4("Y-value to compare:"),
                       choices = measures,
                       selected = measures[2])
       ),
