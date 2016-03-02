@@ -21,11 +21,7 @@ measures <- colnames(data)[1:4]
 
 #Build a map 
 build_map <- function(type, x_value, y_value) {
-   #tmp
-   type <- "setosa"
-   x_value <- "Sepal.Length"
-   y_value <- "Sepal.Width"
-   
+
    plot_data <- data %>%
       filter(Species == type) %>% 
       select(eval(parse(text = x_value)), 
@@ -35,7 +31,7 @@ build_map <- function(type, x_value, y_value) {
       plot_ly(x = eval(parse(text = x_value)),
               y = eval(parse(text = y_value)),
               mode = 'markers',
-              marker = list(size = 10)
+              marker = list(size = 12)
 
       ) %>% 
       layout(title = paste(y_value, "VS", x_value, "for", type),
