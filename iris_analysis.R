@@ -5,7 +5,12 @@ library(dplyr)
 library(plotly)
 
 # load iris dataset
-data <- iris 
+data <- iris %>% 
+   # clean data
+   rename("Sepal Width" = Sepal.Width,
+          "Sepal Length" = Sepal.Length,
+          "Petal Width" = Petal.Width,
+          "Petal Length" = Petal.Length)
    
 # get species
 species <- as.vector(unique(data$Species))
@@ -31,8 +36,8 @@ build_map <- function(type, x_value, y_value) {
               marker = list(size = 12)
       ) %>% 
       layout(title = paste(y_value, "VS", x_value, "for", type),
-             xaxis = list(title = gsub("\\.", " ", x_value)),
-             yaxis = list(title = gsub("\\.", " ", y_value))
+             xaxis = list(title = x_value),
+             yaxis = list(title = y_value)
              )
    
    # return the plot   
